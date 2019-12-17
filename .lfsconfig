@@ -1,0 +1,4 @@
+[lfs]
+    url = https://af01p-ir.devtools.intel.com/artifactory/api/lfs/movidius_vpu_ip2_git_lfs_store-ir-local
+    #url = http://10.54.130.52:9876
+
