@@ -1,20 +1,7 @@
 #!/bin/bash
 
-test_app="t_dummy_test"
-printf "make t_dummy_test $(pwd)\n"
-
-mkdir -p ${WORK_ROOT}/tests
-cd ${WORK_ROOT}/tests
-touch btr-helper
-
-mkdir logs
-
-#cat << EOF > btr-helper
-###!/bin/bash
-#EOF
-#chmod 775 btr-helper
-
-cat << __END_TEST_APP > "${test_app}" 
+function wrtest() {
+    cat << __END_TEST_APP > "$1" 
 #!/bin/bash
 set -eu
 source ${WORK_ROOT}/STEM/projects/kmb-nnruntime/bin/vpu_fullnet.sh
@@ -35,7 +22,32 @@ export CLKCYC=6000000
 save_results >> \${TEST_RESULT_LOG}
 exit 0
 __END_TEST_APP
-chmod 775 "${test_app}"
+    chmod 775 "$1"
+
+}
+
+
+test_app="t_dummy_test"
+printf "make t_dummy_test $(pwd)\n"
+
+mkdir -p ${WORK_ROOT}/tests
+cd ${WORK_ROOT}/tests
+touch btr-helper
+
+mkdir logs
+
+#cat << EOF > btr-helper
+###!/bin/bash
+#EOF
+#chmod 775 btr-helper
+
+wrtest "${test_app}" 
+
+mkdir -p level2
+cd level2
+touch btr-helper
+wrtest("t_level2_test")
+cd ..
 
 printf "wrote file $(ls -l)\n"
 
