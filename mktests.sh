@@ -3,8 +3,8 @@
 test_app="t_dummy_test"
 printf "make t_dummy_test\n"
 
-mkdir -p ${WORK_ROOT}/test
-cd ${WORK_ROOT}/test
+mkdir -p ${WORK_ROOT}/tests
+cd ${WORK_ROOT}/tests
 
 cat << __END_TEST_APP > "${test_app}" 
 #!/bin/bash
@@ -16,6 +16,7 @@ echo "DummyTest\n"
 echo $(ls -l)
 
 __END_TEST_APP
+chmod +x "${test_app}"
 
 printf "wrote file $(ls -l)\n"
 
