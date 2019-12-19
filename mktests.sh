@@ -3,9 +3,13 @@
 test_app="t_dummy_test"
 printf "make t_dummy_test $(pwd)\n"
 
-mkdir -p ${WORK_ROOT}/tests/tests
-cd ${WORK_ROOT}/tests/tests
-touch btr-helper
+mkdir -p ${WORK_ROOT}/tests
+cd ${WORK_ROOT}/tests
+
+cat << EOF > btr-helper
+#!/bin/bash
+EOF
+chmod 775 btr-helper
 
 cat << __END_TEST_APP > "${test_app}" 
 #!/bin/bash
@@ -19,6 +23,7 @@ echo "\$(ls -l)"
 echo \$(env)
 export TEST_RESULT_LOG="\${BTR_CUR_TEST_LOG_DIR}/test-metrics.txt"
 export TEST_NET_NAME="dummy_net"
+export NETWORK_COMP_DESC="dummy.json"
 export TEST_CRC_RESULT="PASS"
 export BLOB_EST_FPS=500
 export CLKCYC_FPS=600
@@ -27,7 +32,7 @@ export CLKCYC=6000000
 save_results >> \${TEST_RESULT_LOG}
 exit 0
 __END_TEST_APP
-chmod +x "${test_app}"
+chmod 775 "${test_app}"
 
 printf "wrote file $(ls -l)\n"
 
