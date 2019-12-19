@@ -16,5 +16,5 @@ echo $(ls -l)
 
 __END_TEST_APP
 
-printf "wrote file"
+printf "wrote file $(ls -l)\n"
 
