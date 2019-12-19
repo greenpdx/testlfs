@@ -13,7 +13,7 @@ set -eu
 export WORK_ROOT="\${HOME}/work"
 cd \${WORK_ROOT}
 echo "DummyTest"
-echo "$(ls -l)"
+echo "\$(ls -l)"
 export TEST_RESULT_LOG="\${BTR_CUR_TEST_LOG_DIR}/test-metrics.txt"
 printf "\${TEST_RESULT_LOG}"
 cat << EOF >> \${TEST_RESULT_LOG}
