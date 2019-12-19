@@ -13,8 +13,8 @@ set -eu
 export WORK_ROOT="\${HOME}/work"
 TEST_DIR=\${WORK_ROOT}/\${TEST_BASE_DIR}
 cd \${WORK_ROOT}
-echo "DummyTest\n"
-echo "$(ls -l)""
+echo "DummyTest"
+echo "$(ls -l)"
 export TEST_RESULT_LOG="\${BTR_CUR_TEST_LOG_DIR}/test-metrics.txt"
 printf "\${TEST_RESULT_LOG}"
 touch \${TEST_RESULT_LOG}
