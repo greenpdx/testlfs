@@ -7,6 +7,8 @@ mkdir -p ${WORK_ROOT}/tests
 cd ${WORK_ROOT}/tests
 touch btr-helper
 
+mkdir logs
+
 #cat << EOF > btr-helper
 ###!/bin/bash
 #EOF
