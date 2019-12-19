@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function wrtest {
+wrtest () {
     cat << __END_TEST_APP > "$1" 
 #!/bin/bash
 set -eu
