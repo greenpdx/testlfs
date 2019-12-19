@@ -1,29 +1,30 @@
 #!/bin/bash
 
 test_app="t_dummy_test"
-printf "make t_dummy_test\n"
+printf "make t_dummy_test $(pwd)\n"
 
-mkdir -p ${WORK_ROOT}/tests
-cd ${WORK_ROOT}/tests
+mkdir -p ${WORK_ROOT}/tests/tests
+cd ${WORK_ROOT}/tests/tests
 touch btr-helper
 
 cat << __END_TEST_APP > "${test_app}" 
 #!/bin/bash
 set -eu
+source ${WORK_ROOT}/STEM/projects/kmb-nnruntime/bin/vpu_fullnet.sh
+printf "$(pwd)"
 export WORK_ROOT="\${HOME}/work"
 cd \${WORK_ROOT}
 echo "DummyTest"
 echo "\$(ls -l)"
 echo \$(env)
 export TEST_RESULT_LOG="\${BTR_CUR_TEST_LOG_DIR}/test-metrics.txt"
-printf "\${TEST_RESULT_LOG}"
-cat << EOF >> \${TEST_RESULT_LOG}
-ACTUAL_PERFORMANCE_FPS=30
-BLOB_ESTIMATE_FPS=40
-CRC_MATCH="PASS"
-NN_PERFORMANCE_CLK=100
-BLOB_ESTIMATE_us=500
-EOF
+export TEST_NET_NAME="dummy_net"
+export TEST_CRC_RESULT="PASS"
+export BLOB_EST_FPS=500
+export CLKCYC_FPS=600
+export BLOB_EST=25000000
+export CLKCYC=6000000
+save_results >> \${TEST_RESULT_LOG}
 exit 0
 __END_TEST_APP
 chmod +x "${test_app}"
