@@ -11,7 +11,6 @@ cat << __END_TEST_APP > "${test_app}"
 #!/bin/bash
 set -eu
 export WORK_ROOT="\${HOME}/work"
-TEST_DIR=\${WORK_ROOT}/\${TEST_BASE_DIR}
 cd \${WORK_ROOT}
 echo "DummyTest"
 echo "$(ls -l)"
