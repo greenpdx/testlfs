@@ -5,11 +5,12 @@ printf "make t_dummy_test $(pwd)\n"
 
 mkdir -p ${WORK_ROOT}/tests
 cd ${WORK_ROOT}/tests
+touch btr-helper
 
-cat << EOF > btr-helper
-#!/bin/bash
-EOF
-chmod 775 btr-helper
+#cat << EOF > btr-helper
+###!/bin/bash
+#EOF
+#chmod 775 btr-helper
 
 cat << __END_TEST_APP > "${test_app}" 
 #!/bin/bash
