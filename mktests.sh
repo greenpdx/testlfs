@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function wrtest() {
+function wrtest {
     cat << __END_TEST_APP > "$1" 
 #!/bin/bash
 set -eu
@@ -23,7 +23,6 @@ save_results >> \${TEST_RESULT_LOG}
 exit 0
 __END_TEST_APP
     chmod 775 "$1"
-
 }
 
 
