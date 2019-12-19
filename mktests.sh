@@ -10,14 +10,14 @@ touch btr-helper
 cat << __END_TEST_APP > "${test_app}" 
 #!/bin/bash
 set -eu
-export WORK_ROOT="${HOME}/work"
+export WORK_ROOT="\${HOME}/work"
 TEST_DIR=\${WORK_ROOT}/\${TEST_BASE_DIR}
-cd ${TEST_DIR}
+cd \${WORK_ROOT}
 echo "DummyTest\n"
-echo $(ls -l)
-export TEST_RESULT_LOG="${BTR_CUR_TEST_LOG_DIR}/test-metrics.txt"
-
-touch ${TEST_RESULT_LOG}
+echo "$(ls -l)""
+export TEST_RESULT_LOG="\${BTR_CUR_TEST_LOG_DIR}/test-metrics.txt"
+printf "\${TEST_RESULT_LOG}"
+touch \${TEST_RESULT_LOG}
 exit(0)
 __END_TEST_APP
 chmod +x "${test_app}"
