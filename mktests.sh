@@ -46,7 +46,7 @@ wrtest "${test_app}"
 mkdir -p level2
 cd level2
 touch btr-helper
-wrtest("t_level2_test")
+wrtest "t_level2_test"
 cd ..
 
 printf "wrote file $(ls -l)\n"
