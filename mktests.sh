@@ -5,7 +5,7 @@ printf "make t_dummy_test\n"
 
 mkdir -p ${WORK_ROOT}/tests
 cd ${WORK_ROOT}/tests
-touch btr_helper
+touch btr-helper
 
 cat << __END_TEST_APP > "${test_app}" 
 #!/bin/bash
