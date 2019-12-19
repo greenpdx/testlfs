@@ -3,6 +3,7 @@
 test_app="t_dummy_test"
 printf "make t_dummy_test\n"
 
+mkdir -p ${WORK_ROOT}/test
 cd ${WORK_ROOT}/test
 
 cat << __END_TEST_APP > "${test_app}" 
